@@ -8,7 +8,8 @@ var seneca = require( 'seneca' )()
     name: "seneca",
     host: "127.0.0.1",
     port: "27017"
-  });
+  })
+  .listen(3000);
 
 
 seneca.ready(function(err){
@@ -59,4 +60,10 @@ seneca.ready(function(err){
 
 });
 
-module.exports = seneca;
+var express = require('express');
+var app = express();
+var senecaweb = seneca.export('web');
+app.use(require("body-parser").json());
+// This is how you integrate Seneca with Express
+app.use( senecaweb );
+app.listen(3000);
