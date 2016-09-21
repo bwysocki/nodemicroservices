@@ -2,6 +2,8 @@ Microservices are small software components that are specialized in one task and
 
 Requirements:
 npm install -g pm2
+npm install mocha -g
+npm install -g istanbul
 
 System desing:
 
